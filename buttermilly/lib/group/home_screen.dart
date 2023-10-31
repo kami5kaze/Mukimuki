@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'dart:math';
 import 'package:buttermilly/account/account.dart';
-import 'package:buttermilly/post_page/post_papge.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -15,6 +14,7 @@ class _Screen1State extends State<HomeScreen> {
   ImagePicker picker = ImagePicker();
   bool isFavorite = false;
   Future<void> getImageFromGallery() async {
+    
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
       setState(() {
@@ -105,20 +105,20 @@ class _Screen1State extends State<HomeScreen> {
                     GestureDetector(
                       onDoubleTap: () {
                         setState(() {
-                          isFavorite = !isFavorite; // 変数をトグルして色を切り替え
-                        });
+                                  isFavorite =! isFavorite; // 変数をトグルして色を切り替え
+                                          });
                       },
                       child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Color.fromARGB(255, 163, 237, 225),
-                          image: DecorationImage(
-                            image: AssetImage(
-                              'image/fireflower.jpg',
-                            ),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Color.fromARGB(255, 163, 237, 225),
+                                image: DecorationImage(
+                                  image: AssetImage(
+                                    'image/fireflower.jpg',
+                                  ),
+                                  fit: BoxFit.cover ,
+                                ),
+                              ),
                         width: 280,
                         height: 390,
                       ),
@@ -139,12 +139,14 @@ class _Screen1State extends State<HomeScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
-                                      padding: const EdgeInsets.only(left: 15),
-                                      child: IconButton(
+                                    padding: const EdgeInsets.only(left: 15),
+                                    
+                                    child: IconButton(
                                         icon: Icon(Icons.favorite,
                                             color: isFavorite
                                                 ? Colors.pink
-                                                : Colors.grey),
+                                                : Colors.grey
+                                                ),
                                         onPressed: () {
                                           setState(() {
                                             isFavorite =
@@ -152,7 +154,8 @@ class _Screen1State extends State<HomeScreen> {
                                           });
                                         },
                                         //タップ中の色
-                                      )),
+                                    )
+                                  ),
                                   Padding(
                                     padding: const EdgeInsets.only(left: 10),
                                     child: Container(
@@ -166,9 +169,11 @@ class _Screen1State extends State<HomeScreen> {
                                   ),
                                 ],
                               ),
-                              Icon(
-                                Icons.card_giftcard,
-                              ),
+                                  
+                                  Icon(
+                                    Icons.card_giftcard,
+                                  ),
+                              
                             ],
                           ),
                         ),
@@ -177,18 +182,6 @@ class _Screen1State extends State<HomeScreen> {
                   ],
                 ),
               ],
-            ),
-          ),
-          GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => PostPage()),
-              );
-            },
-            child: CircleAvatar(
-              radius: 30,
-              backgroundColor: Colors.black,
             ),
           ),
         ],
